@@ -18,6 +18,7 @@ public class UIManager : MonoBehaviour
             TextsolutionOne();
             OsoultionOne();
             OsolutionTwo();
+            OsolutionThree();
         }
     }
 
@@ -50,8 +51,19 @@ public class UIManager : MonoBehaviour
     }
     public void OsolutionTwo()
     {
+        RaycastHit2D hit = Physics2D.Raycast(Input.mousePosition, Vector2.zero);
+
+        if(hit.collider == capsuleCollider)
+        {
+            CheckOResult();
+        }
+
+    }
+
+    public void OsolutionThree()
+    {
         Vector2 mousePos = Input.mousePosition;
-        Collider2D hitCollider = Physics2D.OverlapCircle(mousePos, 0.0001f, 1 << capsuleCollider.gameObject.layer);
+        Collider2D hitCollider = Physics2D.OverlapCircle(mousePos, 0.01f, 1 << capsuleCollider.gameObject.layer);
         if (hitCollider == capsuleCollider)
         {
             CheckOResult();
