@@ -9,12 +9,15 @@ public class UIManager : MonoBehaviour
 {
     public GameObject ExamplePanel;
     public TextMeshProUGUI textComponent;
+    public CapsuleCollider2D capsuleCollider;
 
     void Update()
     {
         if (Input.GetMouseButtonDown(0)) 
         {
             TextsolutionOne();
+            OsoultionOne();
+            OsolutionTwo();
         }
     }
 
@@ -34,6 +37,24 @@ public class UIManager : MonoBehaviour
                 CheckTextResult();
             }    
 
+        }
+    }
+
+    public void OsoultionOne()
+    {
+            Vector2 mousePos = Input.mousePosition;
+            if (capsuleCollider.OverlapPoint(mousePos))
+            {
+                CheckOResult();
+            }
+    }
+    public void OsolutionTwo()
+    {
+        Vector2 mousePos = Input.mousePosition;
+        Collider2D hitCollider = Physics2D.OverlapCircle(mousePos, 0.0001f, 1 << capsuleCollider.gameObject.layer);
+        if (hitCollider == capsuleCollider)
+        {
+            CheckOResult();
         }
     }
 
